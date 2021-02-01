@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
+import "./reset.css";
 import "./App.css";
+import DetailsContainer from "./Components/detailsContainer/DetailsContainer";
+import ForecastContainer from "./Components/forecastContainer/ForecastContainer";
 
 function App() {
-	const [state, setNewState] = useState({ loading: true });
+	const [weatherData, setWeatherData] = useState({ loading: true });
 
 	useEffect(() => {
 		fetch(
@@ -10,7 +13,7 @@ function App() {
 		)
 			.then((response) => response.json())
 			.then((data) => {
-				setNewState({
+				setWeatherData({
 					loading: false,
 					name: data.name,
 					feels_like: data.main.feels_like,
@@ -19,14 +22,16 @@ function App() {
 					temp_min: data.main.temp_min,
 					humidity: data.main.humidity,
 					pressure: data.main.pressure,
-					overall: data.weather[0].main,
+					overall: data.weather[0].description,
 				});
 			});
 	}, []);
 
 	return (
-		<div>
-			<p>{state.loading ? "loading..." : state.temp + " ℃"}</p>
+		<div className="pageContainer">
+			{/* <p>{state.loading ? "loading..." : state.temp + " ℃"}</p> */}
+			<ForecastContainer />
+			<DetailsContainer />
 		</div>
 	);
 }
