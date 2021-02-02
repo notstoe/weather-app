@@ -6,7 +6,6 @@ import ForecastContainer from "./Components/forecastContainer/ForecastContainer"
 
 function App() {
 	const [weatherData, setWeatherData] = useState({ loading: true });
-
 	useEffect(() => {
 		fetch(
 			"http://api.openweathermap.org/data/2.5/weather?q=Liverpool&units=metric&appid=6bf8b98d56a02598af5baf4525e45b8a"

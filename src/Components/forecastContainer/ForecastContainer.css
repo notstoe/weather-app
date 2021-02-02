@@ -1,6 +1,6 @@
 .forecastContainer {
 	background-color: #1e213a;
-	width: 29vw;
+	width: 26vw;
 	height: 100vh;
 	display: flex;
 	flex-direction: column;
@@ -19,12 +19,72 @@
 }
 
 .displayWeather {
+	display: block;
+	position: relative;
 	width: 29vw;
-	height: 20vh;
+	height: 28vh;
+}
+
+.displayWeather::after {
+	position: absolute;
+	content: "";
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background: url(./Assets/cloudBackground.png);
+	background-size: 28vw 33vh;
+	background-position: 75% 740%;
+	opacity: 0.06;
+	transition: 3s all;
+}
+
+.displayWeather:hover:after {
+	background-position: 100% -790%;
 }
 
 #weatherIcon {
 	display: block;
 	margin: 0 auto;
-	width: 20vh;
+	width: 9.5vw;
+	opacity: 0;
+	transition: 2.8s opacity ease-in;
+}
+
+.displayWeather:hover > #weatherIcon {
+	opacity: 1;
+}
+
+/* TODO - change hover effects to happen when loading weather info */
+
+#tempDisplay {
+	color: #e7e7eb;
+	font-size: 95px;
+}
+
+span {
+	font-size: 38px;
+}
+
+#description {
+	color: #a09fb1;
+	font-size: 27px;
+	font-weight: 600;
+	text-align: center;
+}
+
+#date {
+	color: #88869d;
+	font-size: 14px;
+	margin-bottom: -6vh;
+}
+
+#locationIcon {
+	width: 14px;
+}
+
+.location {
+	color: #88869d;
+	font-weight: 600;
+	font-size: 14px;
 }
