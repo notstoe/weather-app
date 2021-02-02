@@ -2,11 +2,19 @@ import React from "react";
 import "./ForecastContainer.css";
 import showerIcon from "../../Assets/Shower.png";
 import locationIcon from "./Assets/locationIcon.svg";
+import currentLocationIcon from "./Assets/currentLocationIcon.svg";
 
 function ForecastContainer() {
 	return (
 		<div className="forecastContainer">
-			<button id="searchBtn">Search for places</button>
+			<div className="searchBar">
+				<button id="searchBtn">Search for places</button>
+				<img
+					src={currentLocationIcon}
+					alt="current location"
+					id="currentLocationIcon"
+				/>
+			</div>
 			<div className="displayWeather">
 				<img src={showerIcon} alt="shower" id="weatherIcon" />
 			</div>

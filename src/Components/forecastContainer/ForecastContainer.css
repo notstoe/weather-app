@@ -1,21 +1,36 @@
 .forecastContainer {
-	background-color: #1e213a;
-	width: 26vw;
-	height: 100vh;
 	display: flex;
 	flex-direction: column;
-	align-items: center;
 	justify-content: space-around;
+	align-items: center;
+	width: 26vw;
+	height: 100vh;
+	background-color: #1e213a;
+}
+
+.searchBar {
+	display: flex;
+	justify-content: space-between;
+	width: 85%;
+	height: 5.2vh;
 }
 
 #searchBtn {
+	width: 10vw;
+	height: 5.2vh;
+	font-size: 15px;
 	background-color: #6e707a;
+	color: #e7e7eb;
 	border-style: none;
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-	color: #e7e7eb;
-	height: 4.2vh;
-	font-size: 15px;
-	width: 13vw;
+}
+
+#currentLocationIcon {
+	width: 2.5vw;
+	background: #6e707a;
+	padding-top: 0.9vh;
+	border-radius: 50%;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .displayWeather {
@@ -45,8 +60,8 @@
 
 #weatherIcon {
 	display: block;
-	margin: 0 auto;
 	width: 9.5vw;
+	margin: 0 auto;
 	opacity: 0;
 	transition: 2.8s opacity ease-in;
 }
@@ -80,7 +95,8 @@ span {
 }
 
 #locationIcon {
-	width: 14px;
+	min-width: 15px;
+	width: 0.8vw;
 }
 
 .location {
