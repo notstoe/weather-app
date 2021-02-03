@@ -28,3 +28,9 @@
 	background-color: #e7e7eb;
 	color: #110e3c;
 }
+
+.weekContainer {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 7vh;
+}

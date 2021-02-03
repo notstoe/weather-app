@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./reset.css";
 import "./App.css";
-import DetailsContainer from "./Components/detailsContainer/DetailsContainer";
-import ForecastContainer from "./Components/forecastContainer/ForecastContainer";
+import DetailsContainer from "./Components/DetailsContainer/DetailsContainer";
+import ForecastContainer from "./Components/ForecastContainer/ForecastContainer";
 
 function App() {
 	const [weatherData, setWeatherData] = useState({ loading: true });

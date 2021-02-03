@@ -1,0 +1,31 @@
+.weekCard {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	box-sizing: border-box;
+	padding: 15px 20px;
+	background-color: #1e213a;
+	height: 31vh;
+	font-size: 16px;
+}
+
+.cardInfo {
+	color: #e7e7eb;
+}
+
+.cardIcon {
+	width: 6vw;
+	padding-right: 1.2vw;
+	padding-bottom: 15px;
+}
+
+.cardBottom {
+	display: flex;
+	justify-content: space-between;
+	width: 85%;
+}
+
+#tempMin {
+	color: #a09fb1;
+}
