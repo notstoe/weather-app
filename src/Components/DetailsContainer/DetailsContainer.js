@@ -16,6 +16,7 @@ function DetailsContainer() {
 				<WeekForecastCard />
 				<WeekForecastCard />
 			</div>
+			<p id="sectionTitle">Today's Highlights</p>
 		</div>
 	);
 }

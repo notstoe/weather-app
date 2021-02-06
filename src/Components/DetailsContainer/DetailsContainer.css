@@ -32,5 +32,13 @@
 .weekContainer {
 	display: flex;
 	justify-content: space-between;
-	margin-top: 7vh;
+	margin-top: 6vh;
+}
+
+#sectionTitle {
+	font-weight: bold;
+	font-size: 24px;
+	font-style: normal;
+	color: #e7e7eb;
+	margin-top: 6vh;
 }
