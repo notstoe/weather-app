@@ -1,0 +1,71 @@
+.detailsCard {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	width: 25vw;
+	height: 21vh;
+	color: #e7e7eb;
+	background-color: #1e213a;
+}
+
+#title {
+	font-size: 20px;
+}
+
+#mainInfo {
+	font-size: 50px;
+	font-weight: bold;
+}
+
+.progressBarInfoContainer {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 80%;
+}
+
+.progressBarInfo {
+	color: #a09fb1;
+	font-size: 13px;
+	margin-bottom: -1.2vh;
+}
+
+#progressBar {
+	position: relative;
+	width: 80%;
+	height: 9px;
+	background-color: #e7e7eb;
+	border-radius: 80px;
+	overflow: hidden;
+}
+
+#progressBarFilling {
+	display: block;
+	height: 100%;
+	border-radius: 80px;
+	background-color: #ffec65;
+	overflow: hidden;
+}
+
+.percentageContainer {
+	position: relative;
+	width: 80%;
+}
+
+#percentageUnit {
+	position: absolute;
+	right: 0;
+	margin-top: -1vh;
+	font-size: 12px;
+}
+
+.feelsLikeSubtitle {
+	display: flex;
+	justify-content: space-between;
+	width: 40%;
+}
+
+#maxTemp {
+	color: #a09fb1;
+}

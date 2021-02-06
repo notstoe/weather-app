@@ -32,7 +32,7 @@
 .weekContainer {
 	display: flex;
 	justify-content: space-between;
-	margin-top: 6vh;
+	margin-top: 2vh;
 }
 
 #sectionTitle {
@@ -40,5 +40,11 @@
 	font-size: 24px;
 	font-style: normal;
 	color: #e7e7eb;
-	margin-top: 6vh;
+	margin-top: 3vh;
+}
+
+.currCardContainer {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 3vh;
 }
