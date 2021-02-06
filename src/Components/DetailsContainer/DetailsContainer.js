@@ -3,20 +3,29 @@ import "./DetailsContainer.css";
 import CurrDetailsCard from "./CurrDetailsCard/CurrDetailsCard";
 import WeekForecastCard from "./WeekForecastCard/WeekForecastCard";
 
-function DetailsContainer() {
+function DetailsContainer(props) {
+	const {
+		feelsLike,
+		tempMax,
+		tempMin,
+		humidity,
+		visibility,
+		pressure,
+	} = props.weatherData;
+
 	const dataArr = [
 		{
 			title: "Feels Like",
-			mainInfo: "10",
-			subtitle: ["8", "13"],
+			mainInfo: feelsLike,
+			subtitle: [tempMax, tempMin],
 		},
-		{ title: "Humidity", mainInfo: "75", subtitle: "progressBar" },
+		{ title: "Humidity", mainInfo: humidity, subtitle: "progressBar" },
 		{
 			title: "Visibility",
-			mainInfo: "7 km",
+			mainInfo: `${visibility / 1000} km`,
 			subtitle: "",
 		},
-		{ title: "Air Pressure", mainInfo: "20 hPa", subtitle: "" },
+		{ title: "Air Pressure", mainInfo: `${pressure / 1000} atm`, subtitle: "" },
 	];
 
 	return (
