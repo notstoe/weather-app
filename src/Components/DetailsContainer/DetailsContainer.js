@@ -1,9 +1,24 @@
 import React from "react";
-import CurrDetailsCard from "./CurrDetailsCard/CurrDetailsCard";
 import "./DetailsContainer.css";
+import CurrDetailsCard from "./CurrDetailsCard/CurrDetailsCard";
 import WeekForecastCard from "./WeekForecastCard/WeekForecastCard";
 
 function DetailsContainer() {
+	const dataArr = [
+		{
+			title: "Feels Like",
+			mainInfo: "10",
+			subtitle: ["8", "13"],
+		},
+		{ title: "Humidity", mainInfo: "75", subtitle: "progressBar" },
+		{
+			title: "Visibility",
+			mainInfo: "7 km",
+			subtitle: "",
+		},
+		{ title: "Air Pressure", mainInfo: "20 hPa", subtitle: "" },
+	];
+
 	return (
 		<div className="detailsContainer">
 			<div className="unitsContainer">
@@ -19,24 +34,12 @@ function DetailsContainer() {
 			</div>
 			<p id="sectionTitle">Today's Highlights</p>
 			<div className="currCardContainer">
-				<CurrDetailsCard
-					data={{ title: "Feels Like", mainInfo: "10", subtitle: ["8", "13"] }}
-				/>
-				<CurrDetailsCard
-					data={{ title: "Humidity", mainInfo: "25", subtitle: "progressBar" }}
-				/>
+				<CurrDetailsCard data={dataArr[0]} />
+				<CurrDetailsCard data={dataArr[1]} />
 			</div>
 			<div className="currCardContainer">
-				<CurrDetailsCard
-					data={{
-						title: "Visibility",
-						mainInfo: "7 km",
-						subtitle: "",
-					}}
-				/>
-				<CurrDetailsCard
-					data={{ title: "Air Pressure", mainInfo: "20 hPa", subtitle: "" }}
-				/>
+				<CurrDetailsCard data={dataArr[2]} />
+				<CurrDetailsCard data={dataArr[3]} />
 			</div>
 		</div>
 	);
