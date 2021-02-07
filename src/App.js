@@ -6,8 +6,8 @@ import ForecastContainer from "./Components/ForecastContainer/ForecastContainer"
 
 function App() {
 	const [weatherData, setWeatherData] = useState({ loading: true });
+	const [forecastObj, setForecastObj] = useState({ loading: true });
 	useEffect(() => {
-		//useEffect as ComponentDidMount
 		fetch(
 			"http://api.openweathermap.org/data/2.5/weather?q=liverpool&units=metric&appid=6bf8b98d56a02598af5baf4525e45b8a"
 		)
@@ -25,14 +25,30 @@ function App() {
 					pressure: data.main.pressure,
 					overall: data.weather[0].main,
 					id: data.weather[0].id,
+					coord: data.coord,
 				});
 			});
 	}, []);
 
+	useEffect(() => {
+		if (weatherData.coord) {
+			fetch(
+				`https://api.openweathermap.org/data/2.5/onecall?lat=${weatherData.coord.lat}&lon=${weatherData.coord.lon}&exclude=current,minutely,hourly,alerts&units=metric&appid=6bf8b98d56a02598af5baf4525e45b8a`
+			)
+				.then((response) => response.json())
+				.then((data) => {
+					setForecastObj({
+						loading: false,
+						dailyArr: data.daily,
+					});
+				});
+		}
+	}, [weatherData.coord]);
+
 	return (
 		<div className="pageContainer">
 			<ForecastContainer weatherData={weatherData} />
-			<DetailsContainer weatherData={weatherData} />
+			<DetailsContainer weatherData={weatherData} forecastArr={forecastObj} />
 		</div>
 	);
 }

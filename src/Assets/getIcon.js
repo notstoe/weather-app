@@ -73,7 +73,6 @@ function getIcon(id) {
 			break;
 
 		default:
-			console.log("Oops! Something went wrong");
 			break;
 	}
 	return iconImg;

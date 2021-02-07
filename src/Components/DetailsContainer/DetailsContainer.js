@@ -28,19 +28,33 @@ function DetailsContainer(props) {
 		{ title: "Air Pressure", mainInfo: `${pressure / 1000} atm`, subtitle: "" },
 	];
 
+	const { dailyArr } = props.forecastArr; //comes with the promise resolve, otherwise undefined
+
+	let weekForecastComponents;
+
+	if (dailyArr) {
+		const fiveDaysArr = dailyArr.slice(1, 6);
+
+		weekForecastComponents = fiveDaysArr.map((dayForecast, index) => {
+			const forecastData = {
+				date: new Date(dayForecast.dt * 1000).toLocaleDateString("en", {
+					weekday: "long",
+				}),
+				tempMin: Math.round(Number(dayForecast.temp.min)),
+				tempMax: Math.round(Number(dayForecast.temp.max)),
+				idForecast: dayForecast.weather[0].id,
+			};
+			return <WeekForecastCard key={index} forecastData={forecastData} />;
+		});
+	}
+
 	return (
 		<div className="detailsContainer">
 			<div className="unitsContainer">
 				<p className="units selectedUnit">°C</p>
 				<p className="units ">°F</p>
 			</div>
-			<div className="weekContainer">
-				<WeekForecastCard />
-				<WeekForecastCard />
-				<WeekForecastCard />
-				<WeekForecastCard />
-				<WeekForecastCard />
-			</div>
+			<div className="weekContainer">{weekForecastComponents}</div>
 			<p id="sectionTitle">Today's Highlights</p>
 			<div className="currCardContainer">
 				<CurrDetailsCard data={dataArr[0]} />

@@ -1,15 +1,17 @@
 import React from "react";
-import lightRain from "../../../Assets/LightRain.png";
+import getIcon from "../../../Assets/getIcon";
 import "./WeekForecastCard.css";
 
-function weekForecastCard() {
+function weekForecastCard(props) {
+	const { date, idForecast, tempMax, tempMin } = props.forecastData;
+
 	return (
 		<div className="weekCard">
-			<p className="cardInfo">Tomorrow</p>
-			<img className="cardIcon" src={lightRain} alt="lightRain" />
+			<p className="cardInfo">{date}</p>
+			<img className="cardIcon" src={getIcon(idForecast)} alt="lightRain" />
 			<div className="cardBottom">
-				<p className="cardInfo">16°C</p>
-				<p id="tempMin">11°C</p>
+				<p className="cardInfo">{tempMax}°C</p>
+				<p id="tempMin">{tempMin}°C</p>
 			</div>
 		</div>
 	);
