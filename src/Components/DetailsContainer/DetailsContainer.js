@@ -37,8 +37,10 @@ function DetailsContainer(props) {
 
 		weekForecastComponents = fiveDaysArr.map((dayForecast, index) => {
 			const forecastData = {
-				date: new Date(dayForecast.dt * 1000).toLocaleDateString("en", {
-					weekday: "long",
+				date: new Date(dayForecast.dt * 1000).toLocaleDateString("en-UK", {
+					weekday: "short",
+					day: "numeric",
+					month: "short",
 				}),
 				tempMin: Math.round(Number(dayForecast.temp.min)),
 				tempMax: Math.round(Number(dayForecast.temp.max)),
