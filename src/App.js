@@ -14,7 +14,7 @@ function App() {
 			.then((response) => response.json())
 			.then((data) => {
 				setWeatherData({
-					loadingWeather: false,
+					loadingWeather: true,
 					name: data.name,
 					temp: Math.round(Number(data.main.temp)),
 					feelsLike: Math.round(Number(data.main.feels_like)),
