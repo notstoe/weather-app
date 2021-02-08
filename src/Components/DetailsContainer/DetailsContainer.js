@@ -1,4 +1,5 @@
 import React from "react";
+import { Transition } from "react-transition-group";
 import "./DetailsContainer.css";
 import CurrDetailsCard from "./CurrDetailsCard/CurrDetailsCard";
 import WeekForecastCard from "./WeekForecastCard/WeekForecastCard";
@@ -52,23 +53,46 @@ function DetailsContainer(props) {
 		});
 	}
 
+	const duration = 400; //opacity transition duration in ms
+
+	const defaultStyle = {
+		transition: `opacity ${duration}ms ease-in`,
+	};
+
+	const transitionStyles = {
+		entering: { opacity: 0 },
+		entered: { opacity: 1 },
+		exiting: { opacity: 1 },
+		exited: { opacity: 0 },
+	};
+
 	if (!loadingWeather && !loadingForecast) {
 		return (
 			<div className="detailsContainer">
-				<div className="unitsContainer">
-					<p className="units selectedUnit">°C</p>
-					<p className="units ">°F</p>
-				</div>
-				<div className="weekContainer">{weekForecastComponents}</div>
-				<p id="sectionTitle">Today's Highlights</p>
-				<div className="currCardContainer">
-					<CurrDetailsCard data={dataArr[0]} />
-					<CurrDetailsCard data={dataArr[1]} />
-				</div>
-				<div className="currCardContainer">
-					<CurrDetailsCard data={dataArr[2]} />
-					<CurrDetailsCard data={dataArr[3]} />
-				</div>
+				<Transition
+					in={!loadingWeather && !loadingForecast}
+					appear={!loadingWeather && !loadingForecast}
+					timeout={duration}
+				>
+					{(state) => (
+						<div style={{ ...defaultStyle, ...transitionStyles[state] }}>
+							<div className="unitsContainer">
+								<p className="units selectedUnit">°C</p>
+								<p className="units ">°F</p>
+							</div>
+							<div className="weekContainer">{weekForecastComponents}</div>
+							<p id="sectionTitle">Today's Highlights</p>
+							<div className="currCardContainer">
+								<CurrDetailsCard data={dataArr[0]} />
+								<CurrDetailsCard data={dataArr[1]} />
+							</div>
+							<div className="currCardContainer">
+								<CurrDetailsCard data={dataArr[2]} />
+								<CurrDetailsCard data={dataArr[3]} />
+							</div>
+						</div>
+					)}
+				</Transition>
 			</div>
 		);
 	} else {

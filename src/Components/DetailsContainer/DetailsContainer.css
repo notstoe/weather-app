@@ -5,6 +5,7 @@
 	padding: 4.5vh 125px;
 	background-color: #100e1d;
 	position: relative;
+	transition: opacity 2s;
 }
 
 .unitsContainer {
