@@ -5,8 +5,8 @@ import DetailsContainer from "./Components/DetailsContainer/DetailsContainer";
 import ForecastContainer from "./Components/ForecastContainer/ForecastContainer";
 
 function App() {
-	const [weatherData, setWeatherData] = useState({ loading: true });
-	const [forecastObj, setForecastObj] = useState({ loading: true });
+	const [weatherData, setWeatherData] = useState({ loadingWeather: true });
+	const [forecastObj, setForecastObj] = useState({ loadingForecast: true });
 	useEffect(() => {
 		fetch(
 			"http://api.openweathermap.org/data/2.5/weather?q=liverpool&units=metric&appid=6bf8b98d56a02598af5baf4525e45b8a"
@@ -14,7 +14,7 @@ function App() {
 			.then((response) => response.json())
 			.then((data) => {
 				setWeatherData({
-					loading: false,
+					loadingWeather: true,
 					name: data.name,
 					temp: Math.round(Number(data.main.temp)),
 					feelsLike: Math.round(Number(data.main.feels_like)),
@@ -38,7 +38,7 @@ function App() {
 				.then((response) => response.json())
 				.then((data) => {
 					setForecastObj({
-						loading: false,
+						loadingForecast: true,
 						dailyArr: data.daily,
 					});
 				});

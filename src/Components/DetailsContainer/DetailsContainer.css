@@ -4,6 +4,7 @@
 	box-sizing: border-box;
 	padding: 4.5vh 125px;
 	background-color: #100e1d;
+	position: relative;
 }
 
 .unitsContainer {
@@ -47,4 +48,25 @@
 	display: flex;
 	justify-content: space-between;
 	margin-top: 3vh;
+}
+
+#loadingCloud {
+	position: absolute;
+	display: block;
+	width: 200px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	opacity: 0.03;
+	animation: pulse 4.2s infinite ease-in;
+}
+
+@keyframes pulse {
+	0%,
+	100% {
+		opacity: 0.03;
+	}
+	50% {
+		opacity: 1;
+	}
 }
