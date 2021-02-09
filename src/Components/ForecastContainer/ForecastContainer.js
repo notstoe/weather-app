@@ -23,20 +23,20 @@ function ForecastContainer(props) {
 		setSearching((prevValue) => !prevValue);
 	}
 
-	const durationForecast = 150; //opacity transition duration in ms
+	// CSS TRANSITIONS HANDLING
+
+	const duration = 150; //opacity transition duration in ms
 
 	const forecastContainer = {
-		transition: `opacity ${durationForecast}ms ease-in`,
+		transition: `opacity ${duration}ms ease-in`,
 	};
 
-	const forecastContainerTransition = {
+	const opacityTransition = {
 		entering: { opacity: 0 },
 		entered: { opacity: 1 },
 		exiting: { opacity: 1 },
 		exited: { opacity: 0 },
 	};
-
-	const durationDisplay = 150;
 
 	const displayTransition = {
 		entering: { opacity: 0 },
@@ -45,31 +45,18 @@ function ForecastContainer(props) {
 		exited: { opacity: 0 },
 	};
 
-	const weatherIconDefault = {
-		transition: `opacity 2.8s ease-in`,
-	};
-
-	const weatherIconTransition = {
-		entering: { opacity: 0 },
-		entered: { opacity: 1 },
-		exiting: { opacity: 1 },
-		exited: { opacity: 0 },
-	};
+	// COMPONENTS
 
 	if (!searching) {
 		return (
 			<div className="forecastContainerBigDiv">
-				<Transition
-					in={!searching}
-					appear={!searching}
-					timeout={durationForecast}
-				>
+				<Transition in={!searching} appear={!searching} timeout={duration}>
 					{(state) => (
 						<div
 							className="forecastContainer"
 							style={{
 								...forecastContainer,
-								...forecastContainerTransition[state],
+								...opacityTransition[state],
 							}}
 						>
 							<div className="searchBarInactive">
@@ -87,7 +74,7 @@ function ForecastContainer(props) {
 								<Transition
 									in={!searching}
 									appear={!searching}
-									timeout={durationDisplay}
+									timeout={duration}
 								>
 									{(state) => (
 										<div
@@ -98,15 +85,18 @@ function ForecastContainer(props) {
 										></div>
 									)}
 								</Transition>
-								<Transition in={!searching} appear={!searching} timeout={150}>
+								<Transition
+									in={!searching}
+									appear={!searching}
+									timeout={duration}
+								>
 									{(state) => (
 										<img
 											src={getIcon(id)}
 											alt="weatherIcon"
 											id="weatherIcon"
 											style={{
-												...weatherIconDefault,
-												...weatherIconTransition[state],
+												...opacityTransition[state],
 											}}
 										/>
 									)}
