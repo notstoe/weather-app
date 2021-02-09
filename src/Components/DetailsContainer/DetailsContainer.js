@@ -28,7 +28,7 @@ function DetailsContainer(props) {
 			mainInfo: `${visibility / 1000} km`,
 			subtitle: "",
 		},
-		{ title: "Air Pressure", mainInfo: `${pressure / 1000} atm`, subtitle: "" },
+		{ title: "Air Pressure", mainInfo: `${pressure} hPa`, subtitle: "" },
 	];
 
 	const { dailyArr, loadingForecast } = props.forecastArr; //comes with the promise resolve, otherwise undefined

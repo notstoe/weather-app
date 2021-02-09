@@ -23,9 +23,9 @@ function ForecastContainer(props) {
 		setSearching((prevValue) => !prevValue);
 	}
 
-	// CSS TRANSITIONS HANDLING
+	// CSS TRANSITION HANDLING
 
-	const duration = 150; //opacity transition duration in ms
+	const duration = 200; //opacity transition duration in ms
 
 	const forecastContainer = {
 		transition: `opacity ${duration}ms ease-in`,
@@ -128,32 +128,54 @@ function ForecastContainer(props) {
 				<p id="closeBtn" onClick={handleClick}>
 					&times;
 				</p>
-				<div className="searchBarContainer">
-					<div className="inputContainer">
-						<img src={searchIcon} alt="searchIcon" id="searchIcon"></img>
-						<input
-							type="text"
-							name="location"
-							id="inputArea"
-							placeholder="search location"
-							onChange={handleChange}
-							value={location}
-						></input>
-					</div>
-					<button
-						id="searchBtnActive"
-						onClick={() => {
-							handleSubmit();
-							handleClick();
-						}}
-					>
-						Search
-					</button>
-				</div>
-				<SearchItem />
-				<SearchItem />
-				<SearchItem />
-				<SearchItem />
+				<Transition in={searching} appear={searching} timeout={duration}>
+					{(state) => (
+						<div
+							className="searchBarContainer"
+							style={{
+								...forecastContainer,
+								...opacityTransition[state],
+							}}
+						>
+							<div className="inputContainer">
+								<img src={searchIcon} alt="searchIcon" id="searchIcon"></img>
+								<input
+									type="text"
+									name="location"
+									id="inputArea"
+									placeholder="search location"
+									onChange={handleChange}
+									value={location}
+								></input>
+							</div>
+							<button
+								id="searchBtnActive"
+								onClick={() => {
+									handleSubmit();
+									handleClick();
+								}}
+							>
+								Search
+							</button>
+						</div>
+					)}
+				</Transition>
+				<Transition in={searching} appear={searching} timeout={duration}>
+					{(state) => (
+						<div
+							className="historyList"
+							style={{
+								...forecastContainer,
+								...opacityTransition[state],
+							}}
+						>
+							<SearchItem />
+							<SearchItem />
+							<SearchItem />
+							<SearchItem />
+						</div>
+					)}
+				</Transition>
 			</div>
 		);
 	}
