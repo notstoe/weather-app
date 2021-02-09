@@ -9,10 +9,21 @@ function App() {
 	const [forecastObj, setForecastObj] = useState({ loadingForecast: true });
 	const [location, setLocation] = useState("");
 
-	function getData(input) {
-		fetch(
-			`http://api.openweathermap.org/data/2.5/weather?q=${input}&units=metric&appid=6bf8b98d56a02598af5baf4525e45b8a`
-		)
+	function getData(input, coords) {
+		setWeatherData({ loadingWeather: true });
+		setForecastObj({ loadingForecast: true });
+		let dataPromise;
+
+		if (input.length < 1) {
+			dataPromise = fetch(
+				`http://api.openweathermap.org/data/2.5/weather?lat=${coords.lat}&lon=${coords.lon}&units=metric&appid=6bf8b98d56a02598af5baf4525e45b8a`
+			);
+		} else {
+			dataPromise = fetch(
+				`http://api.openweathermap.org/data/2.5/weather?q=${input}&units=metric&appid=6bf8b98d56a02598af5baf4525e45b8a`
+			);
+		}
+		dataPromise
 			.then((response) => response.json())
 			.then((data) => {
 				setWeatherData({
@@ -33,7 +44,7 @@ function App() {
 	}
 
 	useEffect(() => {
-		getData("Liverpool");
+		getData("London");
 	}, []);
 
 	useEffect(() => {
@@ -57,13 +68,12 @@ function App() {
 	}
 
 	function handleSubmit(e) {
-		setWeatherData({ loadingWeather: true });
-		setForecastObj({ loadingForecast: true });
 		if (e) {
 			getData(e.currentTarget.firstChild.textContent);
 		} else {
 			getData(location);
 		}
+		setLocation("");
 	}
 
 	return (
@@ -73,6 +83,7 @@ function App() {
 				location={location}
 				handleChange={handleChange}
 				handleSubmit={handleSubmit}
+				getData={getData}
 			/>
 			<DetailsContainer weatherData={weatherData} forecastArr={forecastObj} />
 		</div>

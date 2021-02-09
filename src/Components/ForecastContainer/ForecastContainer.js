@@ -11,8 +11,8 @@ function ForecastContainer(props) {
 	const [searching, setSearching] = useState(false);
 	const [historyList, setHistoryList] = useState([]);
 
-	const { temp, name, overall, id } = props.weatherData;
-	const { location, handleChange, handleSubmit } = props;
+	const { temp, name, overall, id, loadingWeather } = props.weatherData;
+	const { location, handleChange, handleSubmit, getData } = props;
 
 	const currDate = new Date().toLocaleDateString("en-UK", {
 		weekday: "short",
@@ -45,6 +45,29 @@ function ForecastContainer(props) {
 		);
 	});
 
+	function getLocation() {
+		let options = {
+			enableHighAccuracy: true,
+			timeout: 5000,
+			maximumAge: 0,
+		};
+
+		function successPos(pos) {
+			let currentPos = pos.coords;
+
+			getData("", {
+				lat: currentPos.latitude,
+				lon: currentPos.longitude,
+			});
+		}
+
+		function errorPos(err) {
+			console.warn(`ERRO1R(${err.code}): ${err.message}`);
+		}
+
+		navigator.geolocation.getCurrentPosition(successPos, errorPos, options);
+	}
+
 	// CSS TRANSITION HANDLING
 
 	const duration = 200; //opacity transition duration in ms
@@ -72,7 +95,11 @@ function ForecastContainer(props) {
 	if (!searching) {
 		return (
 			<div className="forecastContainerBigDiv">
-				<Transition in={!searching} appear={!searching} timeout={duration}>
+				<Transition
+					in={!searching && !loadingWeather}
+					appear={!searching && !loadingWeather}
+					timeout={duration}
+				>
 					{(state) => (
 						<div
 							className="forecastContainer"
@@ -89,13 +116,14 @@ function ForecastContainer(props) {
 									src={currentLocationIcon}
 									alt="current location"
 									id="currentLocationIcon"
+									onClick={getLocation}
 								/>
 							</div>
 
 							<div className="displayWeather">
 								<Transition
-									in={!searching}
-									appear={!searching}
+									in={!searching && !loadingWeather}
+									appear={!searching && !loadingWeather}
 									timeout={duration}
 								>
 									{(state) => (
@@ -108,8 +136,8 @@ function ForecastContainer(props) {
 									)}
 								</Transition>
 								<Transition
-									in={!searching}
-									appear={!searching}
+									in={!searching && !loadingWeather}
+									appear={!searching && !loadingWeather}
 									timeout={duration}
 								>
 									{(state) => (
