@@ -56,10 +56,14 @@ function App() {
 		setLocation(value);
 	}
 
-	function handleSubmit() {
+	function handleSubmit(e) {
 		setWeatherData({ loadingWeather: true });
 		setForecastObj({ loadingForecast: true });
-		getData(location);
+		if (e) {
+			getData(e.currentTarget.firstChild.textContent);
+		} else {
+			getData(location);
+		}
 	}
 
 	return (

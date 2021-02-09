@@ -36,7 +36,13 @@ function ForecastContainer(props) {
 	}
 
 	const historyComponents = historyList.map((locationName, index) => {
-		return <SearchItem locationName={locationName} key={index} />;
+		return (
+			<SearchItem
+				locationName={locationName}
+				key={index}
+				handleSubmit={handleSubmit}
+			/>
+		);
 	});
 
 	// CSS TRANSITION HANDLING
