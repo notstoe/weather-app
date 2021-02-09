@@ -53,13 +53,13 @@ function DetailsContainer(props) {
 		});
 	}
 
-	const duration = 400; //opacity transition duration in ms
+	const duration = 300; //opacity transition duration in ms
 
-	const defaultStyle = {
+	const DtlsContainer = {
 		transition: `opacity ${duration}ms ease-in`,
 	};
 
-	const transitionStyles = {
+	const DtlsContainerTransition = {
 		entering: { opacity: 0 },
 		entered: { opacity: 1 },
 		exiting: { opacity: 1 },
@@ -75,7 +75,12 @@ function DetailsContainer(props) {
 					timeout={duration}
 				>
 					{(state) => (
-						<div style={{ ...defaultStyle, ...transitionStyles[state] }}>
+						<div
+							style={{
+								...DtlsContainer,
+								...DtlsContainerTransition[state],
+							}}
+						>
 							<div className="unitsContainer">
 								<p className="units selectedUnit">°C</p>
 								<p className="units ">°F</p>

@@ -7,14 +7,16 @@ import ForecastContainer from "./Components/ForecastContainer/ForecastContainer"
 function App() {
 	const [weatherData, setWeatherData] = useState({ loadingWeather: true });
 	const [forecastObj, setForecastObj] = useState({ loadingForecast: true });
-	useEffect(() => {
+	const [location, setLocation] = useState("");
+
+	function getData(input) {
 		fetch(
-			"http://api.openweathermap.org/data/2.5/weather?q=liverpool&units=metric&appid=6bf8b98d56a02598af5baf4525e45b8a"
+			`http://api.openweathermap.org/data/2.5/weather?q=${input}&units=metric&appid=6bf8b98d56a02598af5baf4525e45b8a`
 		)
 			.then((response) => response.json())
 			.then((data) => {
 				setWeatherData({
-					loadingWeather: true,
+					loadingWeather: false,
 					name: data.name,
 					temp: Math.round(Number(data.main.temp)),
 					feelsLike: Math.round(Number(data.main.feels_like)),
@@ -28,6 +30,10 @@ function App() {
 					coord: data.coord,
 				});
 			});
+	}
+
+	useEffect(() => {
+		getData("Liverpool");
 	}, []);
 
 	useEffect(() => {
@@ -45,9 +51,25 @@ function App() {
 		}
 	}, [weatherData.coord]);
 
+	function handleChange(e) {
+		const { value } = e.target;
+		setLocation(value);
+	}
+
+	function handleSubmit() {
+		setWeatherData({ loadingWeather: true });
+		setForecastObj({ loadingForecast: true });
+		getData(location);
+	}
+
 	return (
 		<div className="pageContainer">
-			<ForecastContainer weatherData={weatherData} />
+			<ForecastContainer
+				weatherData={weatherData}
+				location={location}
+				handleChange={handleChange}
+				handleSubmit={handleSubmit}
+			/>
 			<DetailsContainer weatherData={weatherData} forecastArr={forecastObj} />
 		</div>
 	);
