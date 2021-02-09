@@ -9,6 +9,7 @@ import SearchItem from "./SearchItem/SearchItem";
 
 function ForecastContainer(props) {
 	const [searching, setSearching] = useState(false);
+	const [historyList, setHistoryList] = useState([]);
 
 	const { temp, name, overall, id } = props.weatherData;
 	const { location, handleChange, handleSubmit } = props;
@@ -22,6 +23,21 @@ function ForecastContainer(props) {
 	function handleClick() {
 		setSearching((prevValue) => !prevValue);
 	}
+
+	function addToList() {
+		let newList = historyList.map((element) => element);
+		if (newList.length > 3) {
+			newList.pop();
+			newList.unshift(location);
+		} else {
+			newList.unshift(location);
+		}
+		setHistoryList(newList);
+	}
+
+	const historyComponents = historyList.map((locationName, index) => {
+		return <SearchItem locationName={locationName} key={index} />;
+	});
 
 	// CSS TRANSITION HANDLING
 
@@ -153,6 +169,7 @@ function ForecastContainer(props) {
 								onClick={() => {
 									handleSubmit();
 									handleClick();
+									addToList();
 								}}
 							>
 								Search
@@ -169,10 +186,7 @@ function ForecastContainer(props) {
 								...opacityTransition[state],
 							}}
 						>
-							<SearchItem />
-							<SearchItem />
-							<SearchItem />
-							<SearchItem />
+							{historyComponents}
 						</div>
 					)}
 				</Transition>
