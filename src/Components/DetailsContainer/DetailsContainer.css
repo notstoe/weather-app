@@ -13,7 +13,7 @@
 	justify-content: flex-end;
 }
 
-.units {
+.unit {
 	width: 2.5vw;
 	height: 2.5vw;
 	font-size: 20px;
@@ -24,6 +24,12 @@
 	color: #e7e7eb;
 	border-radius: 50%;
 	margin-left: 12px;
+}
+
+.unit:hover {
+	background-color: #e7e7eb;
+	color: #110e3c;
+	cursor: pointer;
 }
 
 .selectedUnit {

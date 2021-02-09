@@ -8,6 +8,21 @@ function App() {
 	const [weatherData, setWeatherData] = useState({ loadingWeather: true });
 	const [forecastObj, setForecastObj] = useState({ loadingForecast: true });
 	const [location, setLocation] = useState("");
+	const [useFarh, setUseFarh] = useState(false);
+
+	function farhToC(cTemp) {
+		return (cTemp * 9) / 5 + 32;
+	}
+
+	function changeUnit() {
+		setUseFarh((prevState) => !prevState);
+	}
+
+	let tempConfig = {
+		toF: farhToC,
+		useF: useFarh,
+		changeUnit: changeUnit,
+	};
 
 	function getData(input, coords) {
 		setWeatherData({ loadingWeather: true });
@@ -84,8 +99,13 @@ function App() {
 				handleChange={handleChange}
 				handleSubmit={handleSubmit}
 				getData={getData}
+				tempConfig={tempConfig}
 			/>
-			<DetailsContainer weatherData={weatherData} forecastArr={forecastObj} />
+			<DetailsContainer
+				weatherData={weatherData}
+				forecastArr={forecastObj}
+				tempConfig={tempConfig}
+			/>
 		</div>
 	);
 }

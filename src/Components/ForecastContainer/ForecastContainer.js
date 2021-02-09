@@ -13,6 +13,7 @@ function ForecastContainer(props) {
 
 	const { temp, name, overall, id, loadingWeather } = props.weatherData;
 	const { location, handleChange, handleSubmit, getData } = props;
+	const { useF, toF } = props.tempConfig;
 
 	const currDate = new Date().toLocaleDateString("en-UK", {
 		weekday: "short",
@@ -152,10 +153,17 @@ function ForecastContainer(props) {
 									)}
 								</Transition>
 							</div>
-							<p id="tempDisplay">
-								{temp}
-								<span>°C</span>
-							</p>
+							{useF ? (
+								<p id="tempDisplay">
+									{Math.round(toF(temp))}
+									<span>°F</span>
+								</p>
+							) : (
+								<p id="tempDisplay">
+									{temp}
+									<span>°C</span>
+								</p>
+							)}
 							<p id="description">{overall}</p>
 							<p id="date">
 								{"Today"}&nbsp;&nbsp; • &nbsp;&nbsp;{currDate}

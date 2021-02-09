@@ -6,6 +6,9 @@ import WeekForecastCard from "./WeekForecastCard/WeekForecastCard";
 import getIcon from "../../Assets/getIcon";
 
 function DetailsContainer(props) {
+	const { useF, changeUnit } = props.tempConfig;
+	const { dailyArr, loadingForecast } = props.forecastArr;
+	let weekForecastComponents;
 	const {
 		loadingWeather,
 		feelsLike,
@@ -31,11 +34,8 @@ function DetailsContainer(props) {
 		{ title: "Air Pressure", mainInfo: `${pressure} hPa`, subtitle: "" },
 	];
 
-	const { dailyArr, loadingForecast } = props.forecastArr; //comes with the promise resolve, otherwise undefined
-
-	let weekForecastComponents;
-
 	if (dailyArr) {
+		//dailyArr comes with the promise resolve, otherwise undefined
 		const fiveDaysArr = dailyArr.slice(1, 6);
 
 		weekForecastComponents = fiveDaysArr.map((dayForecast, index) => {
@@ -49,7 +49,13 @@ function DetailsContainer(props) {
 				tempMax: Math.round(Number(dayForecast.temp.max)),
 				idForecast: dayForecast.weather[0].id,
 			};
-			return <WeekForecastCard key={index} forecastData={forecastData} />;
+			return (
+				<WeekForecastCard
+					key={index}
+					forecastData={forecastData}
+					tempConfig={props.tempConfig}
+				/>
+			);
 		});
 	}
 
@@ -66,6 +72,15 @@ function DetailsContainer(props) {
 		exited: { opacity: 0 },
 	};
 
+	// FUNCTIONS
+
+	function handleUnitClick(e) {
+		if (e.currentTarget.className.includes("selectedUnit")) return;
+		changeUnit();
+	}
+
+	// COMPONENTS
+
 	if (!loadingWeather && !loadingForecast) {
 		return (
 			<div className="detailsContainer">
@@ -81,14 +96,40 @@ function DetailsContainer(props) {
 								...DtlsContainerTransition[state],
 							}}
 						>
-							<div className="unitsContainer">
-								<p className="units selectedUnit">°C</p>
-								<p className="units ">°F</p>
-							</div>
+							{useF ? (
+								<div className="unitsContainer">
+									<p id="celsius" className="unit" onClick={handleUnitClick}>
+										°C
+									</p>
+									<p
+										id="fahr"
+										className="unit selectedUnit"
+										onClick={handleUnitClick}
+									>
+										°F
+									</p>
+								</div>
+							) : (
+								<div className="unitsContainer">
+									<p
+										id="celsius"
+										className="unit selectedUnit"
+										onClick={handleUnitClick}
+									>
+										°C
+									</p>
+									<p id="fahr" className="unit" onClick={handleUnitClick}>
+										°F
+									</p>
+								</div>
+							)}
 							<div className="weekContainer">{weekForecastComponents}</div>
 							<p id="sectionTitle">Today's Highlights</p>
 							<div className="currCardContainer">
-								<CurrDetailsCard data={dataArr[0]} />
+								<CurrDetailsCard
+									data={dataArr[0]}
+									tempConfig={props.tempConfig}
+								/>
 								<CurrDetailsCard data={dataArr[1]} />
 							</div>
 							<div className="currCardContainer">

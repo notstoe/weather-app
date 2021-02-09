@@ -28,13 +28,26 @@ function CurrDetailsCard(props) {
 			</div>
 		);
 	} else if (subtitle.length > 1) {
+		const { useF, toF } = props.tempConfig;
 		return (
 			<div className="detailsCard">
 				<p id="title">{title}</p>
-				<p id="mainInfo">{mainInfo}°C</p>
+				{useF ? (
+					<p id="mainInfo">{Math.round(toF(mainInfo))}°F</p>
+				) : (
+					<p id="mainInfo">{mainInfo}°C</p>
+				)}
 				<div className="feelsLikeSubtitle">
-					<p id="minTemp">{subtitle[0]}°C</p>
-					<p id="maxTemp">{subtitle[1]}°C</p>
+					{useF ? (
+						<p id="minTemp">{Math.round(toF(subtitle[0]))}°F</p>
+					) : (
+						<p id="minTemp">{subtitle[0]}°C</p>
+					)}
+					{useF ? (
+						<p id="maxTemp">{Math.round(toF(subtitle[1]))}°F</p>
+					) : (
+						<p id="maxTemp">{subtitle[1]}°C</p>
+					)}
 				</div>
 			</div>
 		);
