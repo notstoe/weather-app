@@ -26,7 +26,7 @@ function ForecastContainer(props) {
 
 	function addToList() {
 		let newList = historyList.map((element) => element);
-		if (newList.length > 3) {
+		if (newList.length > 5) {
 			newList.pop();
 			newList.unshift(location);
 		} else {
