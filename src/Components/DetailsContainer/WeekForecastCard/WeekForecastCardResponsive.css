@@ -1,0 +1,20 @@
+@media (max-width: 420px) {
+	.weekCard {
+		margin-top: 20px;
+		margin-bottom: 20px;
+		width: 70%;
+	}
+
+	.cardIcon {
+		width: 70px;
+		padding-right: 1.8vw;
+	}
+
+	.cardInfo {
+		font-size: 16px;
+	}
+
+	.cardBottom {
+		font-size: 16px;
+	}
+}

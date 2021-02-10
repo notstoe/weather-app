@@ -1,5 +1,6 @@
 import React from "react";
 import "./CurrDetailsCard.css";
+import "./CurrDetailsCardResponsive.css";
 
 function CurrDetailsCard(props) {
 	const { title, mainInfo, subtitle } = props.data;

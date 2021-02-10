@@ -1,0 +1,36 @@
+@media (max-width: 420px) {
+	.forecastContainer {
+		width: 100vw;
+		justify-content: space-between;
+		padding: 18px 5px 65px 5px;
+		box-sizing: border-box;
+	}
+
+	.displayWeather {
+		width: 100vw;
+	}
+
+	.fakeAfter {
+		background-size: 100vw;
+	}
+
+	#weatherIcon {
+		width: 33vw;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	.searchBarInactive {
+		width: 95%;
+	}
+
+	#searchBtnInactive {
+		width: 178px;
+	}
+
+	#currentLocationIcon {
+		width: 38px;
+	}
+}

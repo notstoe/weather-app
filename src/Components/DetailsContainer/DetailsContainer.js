@@ -1,6 +1,7 @@
 import React from "react";
 import { Transition } from "react-transition-group";
 import "./DetailsContainer.css";
+import "./DetailsContainerResponsive.css";
 import CurrDetailsCard from "./CurrDetailsCard/CurrDetailsCard";
 import WeekForecastCard from "./WeekForecastCard/WeekForecastCard";
 import getIcon from "../../Assets/getIcon";

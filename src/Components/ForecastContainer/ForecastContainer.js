@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Transition } from "react-transition-group";
 import "./ForecastContainer.css";
+import "./ForecastContainerResponsive.css";
 import locationIcon from "./Assets/locationIcon.svg";
 import currentLocationIcon from "./Assets/currentLocationIcon.svg";
 import searchIcon from "./Assets/searchIcon.svg";

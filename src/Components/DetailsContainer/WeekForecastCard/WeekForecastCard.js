@@ -1,6 +1,7 @@
 import React from "react";
 import getIcon from "../../../Assets/getIcon";
 import "./WeekForecastCard.css";
+import "./WeekForecastCardResponsive.css";
 
 function weekForecastCard(props) {
 	const { date, idForecast, tempMax, tempMin } = props.forecastData;
