@@ -31,11 +31,11 @@ function App() {
 
 		if (input.length < 1) {
 			dataPromise = fetch(
-				`http://api.openweathermap.org/data/2.5/weather?lat=${coords.lat}&lon=${coords.lon}&units=metric&appid=6bf8b98d56a02598af5baf4525e45b8a`
+				`https://api.openweathermap.org/data/2.5/weather?lat=${coords.lat}&lon=${coords.lon}&units=metric&appid=6bf8b98d56a02598af5baf4525e45b8a`
 			);
 		} else {
 			dataPromise = fetch(
-				`http://api.openweathermap.org/data/2.5/weather?q=${input}&units=metric&appid=6bf8b98d56a02598af5baf4525e45b8a`
+				`https://api.openweathermap.org/data/2.5/weather?q=${input}&units=metric&appid=6bf8b98d56a02598af5baf4525e45b8a`
 			);
 		}
 		dataPromise
