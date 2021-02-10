@@ -187,3 +187,8 @@ span {
 .historyList {
 	width: 80%;
 }
+
+input,
+button {
+	font-family: inherit;
+}
