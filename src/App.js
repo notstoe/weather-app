@@ -31,11 +31,11 @@ function App() {
 
 		if (input.length < 1) {
 			dataPromise = fetch(
-				`https://api.openweathermap.org/data/2.5/weather?lat=${coords.lat}&lon=${coords.lon}&units=metric&appid=6bf8b98d56a02598af5baf4525e45b8a`
+				`api.openweathermap.org/data/2.5/weather?lat=${coords.lat}&lon=${coords.lon}&units=metric&appid=6bf8b98d56a02598af5baf4525e45b8a`
 			);
 		} else {
 			dataPromise = fetch(
-				`https://api.openweathermap.org/data/2.5/weather?q=${input}&units=metric&appid=6bf8b98d56a02598af5baf4525e45b8a`
+				`api.openweathermap.org/data/2.5/weather?q=${input}&units=metric&appid=6bf8b98d56a02598af5baf4525e45b8a`
 			);
 		}
 		dataPromise
@@ -65,7 +65,7 @@ function App() {
 	useEffect(() => {
 		if (weatherData.coord) {
 			fetch(
-				`https://api.openweathermap.org/data/2.5/onecall?lat=${weatherData.coord.lat}&lon=${weatherData.coord.lon}&exclude=current,minutely,hourly,alerts&units=metric&appid=6bf8b98d56a02598af5baf4525e45b8a`
+				`api.openweathermap.org/data/2.5/onecall?lat=${weatherData.coord.lat}&lon=${weatherData.coord.lon}&exclude=current,minutely,hourly,alerts&units=metric&appid=6bf8b98d56a02598af5baf4525e45b8a`
 			)
 				.then((response) => response.json())
 				.then((data) => {
