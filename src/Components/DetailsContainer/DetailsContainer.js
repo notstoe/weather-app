@@ -140,6 +140,12 @@ function DetailsContainer(props) {
 						</div>
 					)}
 				</Transition>
+				<p id="credits">
+					Created by{" "}
+					<a id="ghLink" href="https://github.com/notstoe">
+						Gustavo Tonin
+					</a>
+				</p>
 			</div>
 		);
 	} else {

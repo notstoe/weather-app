@@ -77,3 +77,22 @@
 		opacity: 1;
 	}
 }
+
+#credits {
+	color: #616475;
+	position: absolute;
+	bottom: 9px;
+	left: 50%;
+	font-size: 13px;
+	text-align: center;
+	transform: translateX(-50%);
+}
+
+#ghLink {
+	text-decoration: underline;
+	color: #616475;
+}
+
+#ghLink:hover {
+	color: #e7e7eb;
+}

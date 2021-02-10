@@ -24,4 +24,10 @@
 		align-items: center;
 		margin-top: 0;
 	}
+
+	#credits {
+		position: relative;
+		margin: 0 auto;
+		margin-top: 80px;
+	}
 }
