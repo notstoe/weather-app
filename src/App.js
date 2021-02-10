@@ -3,6 +3,7 @@ import "./reset.css";
 import "./App.css";
 import DetailsContainer from "./Components/DetailsContainer/DetailsContainer";
 import ForecastContainer from "./Components/ForecastContainer/ForecastContainer";
+import config from "./config";
 
 function App() {
 	const [weatherData, setWeatherData] = useState({ loadingWeather: true });
@@ -31,11 +32,13 @@ function App() {
 
 		if (input.length < 1) {
 			dataPromise = fetch(
-				`api.openweathermap.org/data/2.5/weather?lat=${coords.lat}&lon=${coords.lon}&units=metric&appid=6bf8b98d56a02598af5baf4525e45b8a`
+				`https://api.openweathermap.org/data/2.5/weather?lat=${coords.lat}&lon=${coords.lon}&units=metric&appid=${config.WEATHER_API_ID}`,
+				{ mode: "cors" }
 			);
 		} else {
 			dataPromise = fetch(
-				`api.openweathermap.org/data/2.5/weather?q=${input}&units=metric&appid=6bf8b98d56a02598af5baf4525e45b8a`
+				`https://api.openweathermap.org/data/2.5/weather?q=${input}&units=metric&appid=${config.WEATHER_API_ID}`,
+				{ mode: "cors" }
 			);
 		}
 		dataPromise
@@ -65,7 +68,8 @@ function App() {
 	useEffect(() => {
 		if (weatherData.coord) {
 			fetch(
-				`api.openweathermap.org/data/2.5/onecall?lat=${weatherData.coord.lat}&lon=${weatherData.coord.lon}&exclude=current,minutely,hourly,alerts&units=metric&appid=6bf8b98d56a02598af5baf4525e45b8a`
+				`https://api.openweathermap.org/data/2.5/onecall?lat=${weatherData.coord.lat}&lon=${weatherData.coord.lon}&exclude=current,minutely,hourly,alerts&units=metric&appid=${config.WEATHER_API_ID}`,
+				{ mode: "cors" }
 			)
 				.then((response) => response.json())
 				.then((data) => {
