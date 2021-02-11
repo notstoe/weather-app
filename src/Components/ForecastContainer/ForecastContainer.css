@@ -39,7 +39,7 @@
 }
 
 #currentLocationIcon {
-	width: 2.5vw;
+	width: 5.2vh;
 	background: #6e707a;
 	padding-top: 0.9vh;
 	border-radius: 50%;
@@ -86,7 +86,7 @@
 
 #tempDisplay {
 	color: #e7e7eb;
-	font-size: 95px;
+	font-size: 75px;
 }
 
 span {

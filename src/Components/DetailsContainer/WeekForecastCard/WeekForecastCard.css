@@ -6,8 +6,10 @@
 	box-sizing: border-box;
 	padding: 15px 20px;
 	background-color: #1e213a;
-	height: 31vh;
-	font-size: 16px;
+	height: 12.5vw;
+	width: 8.4vw;
+	font-size: 15px;
+	margin-top: 0.4vw;
 }
 
 .cardInfo {
@@ -15,7 +17,7 @@
 }
 
 .cardIcon {
-	width: 6vw;
+	width: 4.5vw;
 	padding-right: 1.2vw;
 	padding-bottom: 15px;
 }

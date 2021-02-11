@@ -2,7 +2,8 @@
 	.weekCard {
 		margin-top: 20px;
 		margin-bottom: 20px;
-		width: 70%;
+		width: 75%;
+		min-height: 200px;
 	}
 
 	.cardIcon {

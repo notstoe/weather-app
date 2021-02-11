@@ -3,18 +3,19 @@
 	flex-direction: column;
 	justify-content: space-around;
 	align-items: center;
-	width: 25vw;
-	height: 21vh;
+	max-width: 21vw;
+	width: 21vw;
+	height: 9vw;
 	color: #e7e7eb;
 	background-color: #1e213a;
 }
 
 #title {
-	font-size: 20px;
+	font-size: 18px;
 }
 
 #mainInfo {
-	font-size: 50px;
+	font-size: 37px;
 	font-weight: bold;
 }
 
