@@ -193,7 +193,7 @@ function ForecastContainer(props) {
 							className="searchBarContainer"
 							onSubmit={(e) => {
 								e.preventDefault();
-								handleSubmit();
+								handleSubmit(null, location);
 								handleClick();
 								addToList();
 							}}

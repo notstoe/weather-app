@@ -58,6 +58,9 @@ function App() {
 					id: data.weather[0].id,
 					coord: data.coord,
 				});
+			})
+			.catch((err) => {
+				alert(`Oops! Something went wrong, refresh and try again`);
 			});
 	}
 
@@ -77,6 +80,9 @@ function App() {
 						loadingForecast: false,
 						dailyArr: data.daily,
 					});
+				})
+				.catch((err) => {
+					alert(`Oops! Something went wrong, refresh and try again`);
 				});
 		}
 	}, [weatherData.coord]);
@@ -86,11 +92,11 @@ function App() {
 		setLocation(value);
 	}
 
-	function handleSubmit(e) {
+	function handleSubmit(e, pos) {
 		if (e) {
 			getData(e.currentTarget.firstChild.textContent);
 		} else {
-			getData(location);
+			getData(pos);
 		}
 		setLocation("");
 	}
