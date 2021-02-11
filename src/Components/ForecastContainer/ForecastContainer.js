@@ -189,8 +189,14 @@ function ForecastContainer(props) {
 				</p>
 				<Transition in={searching} appear={searching} timeout={duration}>
 					{(state) => (
-						<div
+						<form
 							className="searchBarContainer"
+							onSubmit={(e) => {
+								e.preventDefault();
+								handleSubmit();
+								handleClick();
+								addToList();
+							}}
 							style={{
 								...forecastContainer,
 								...opacityTransition[state],
@@ -207,18 +213,10 @@ function ForecastContainer(props) {
 									value={location}
 								></input>
 							</div>
-							<button
-								id="searchBtnActive"
-								onClick={() => {
-									handleSubmit();
-									handleClick();
-									addToList();
-								}}
-								//TODO - add keydown enter to submit (wrap it around a form and change flexbox)
-							>
+							<button type="submit" id="searchBtnActive">
 								Search
 							</button>
-						</div>
+						</form>
 					)}
 				</Transition>
 				<Transition in={searching} appear={searching} timeout={duration}>
