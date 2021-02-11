@@ -134,7 +134,6 @@ span {
 .searchBarContainer {
 	display: flex;
 	justify-content: space-between;
-	width: 80%;
 }
 
 .inputContainer {
@@ -189,6 +188,7 @@ span {
 }
 
 input,
-button {
+button,
+form {
 	font-family: inherit;
 }

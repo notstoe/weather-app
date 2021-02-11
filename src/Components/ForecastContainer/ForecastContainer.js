@@ -208,20 +208,13 @@ function ForecastContainer(props) {
 								></input>
 							</div>
 							<button
-								type="submit"
 								id="searchBtnActive"
 								onClick={() => {
 									handleSubmit();
 									handleClick();
 									addToList();
 								}}
-								onSubmit={(e) => {
-									e.preventDefault();
-									console.log(e.key);
-									// handleSubmit();
-									// handleClick();
-									// addToList();
-								}}
+								//TODO - add keydown enter to submit (wrap it around a form and change flexbox)
 							>
 								Search
 							</button>
