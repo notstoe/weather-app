@@ -23,7 +23,7 @@
 	}
 
 	.searchBarInactive {
-		width: 95%;
+		width: 93%;
 	}
 
 	#searchBtnInactive {
@@ -36,6 +36,11 @@
 	}
 
 	.searchBarContainer {
-		width: 90%;
+		width: 95%;
+		justify-content: space-evenly;
+	}
+
+	.inputContainer {
+		margin-right: 5px;
 	}
 }
