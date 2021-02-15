@@ -15,4 +15,6 @@ The main objectives of this project are to:
 
 # more information
 
+Design based on Weather App idea by [devchallenges.io](https://devchallenges.io/challenges/mM1UIenRhK808W8qmLWv)
+
 [The Odin Project](https://www.theodinproject.com/courses/javascript/lessons/weather-app)
