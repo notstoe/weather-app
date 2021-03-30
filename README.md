@@ -1,6 +1,6 @@
 # weather-app
 
-[Odin] Weather forecast webpage using the ReactJS 16 Framework
+[Odin] Weather forecast webpage using the ReactJS 17 Framework
 
 > See it live on [notstoe.github.io/weather-app](https://notstoe.github.io/weather-app)
 
